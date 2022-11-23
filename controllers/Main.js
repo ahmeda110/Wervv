@@ -125,57 +125,37 @@ function Main(){
                     if(refN){
                         filtered.forEach((p) => {
                             if(p["Fulfillment: Tracking Number"].includes(refN)) {
-                                let tempUF = req.body.params.vals[index]["Shipping System / Adjustment"], tempF, changed = false
+                                let tempUF = req.body.params.vals[index]["Shipping System / Adjustment"], tempF
                                 Object.keys(mapO).forEach((key) => {
                                     if(mapO[key].includes(tempUF)){
                                         tempF = key
-                                        changed = true
                                     }
                                 })
 
-                                if(!changed){
-                                    if(p["Other"]) {
-                                        p["Other"] = Number(p["Other"]) + Number(req.body.params.vals[index]["Net Amount Due"])
-                                    } else {
-                                        p["Other"] = req.body.params.vals[index]["Net Amount Due"]
-                                    }
-                                } else {
-                                    if(!p[tempF])
-                                        p[tempF] = req.body.params.vals[index]["Net Amount Due"]
-                                    if(tempUF.includes("Total"))
-                                        p[tempF] = req.body.params.vals[index]["Net Amount Due"]
-                                    
+                                if(!p[tempF])
+                                    p[tempF] = req.body.params.vals[index]["Net Amount Due"]
+                                if(tempUF.includes("Total")){
+                                    p[tempF] = req.body.params.vals[index]["Net Amount Due"]
                                 }
-
-                               
 
     
                                 while(++index <= req.body.params.vals.length && req.body.params.vals[index] && !req.body.params.vals[index]["Tracking Number"]) {
-                                    let tempUF = req.body.params.vals[index]["Shipping System / Adjustment"], tempF, changed = false
+                                    let tempUF = req.body.params.vals[index]["Shipping System / Adjustment"], tempF
                                     Object.keys(mapO).forEach((key) => {
-                                        if(mapO[key].includes(tempUF)){
+                                        if(mapO[key].includes(tempUF)) {
                                             tempF = key
-                                            changed = true
                                         }
                                     })
 
-                                    if(!changed){
-                                        if(p["Other"]) {
-                                            p["Other"] = Number(p["Other"]) + Number(req.body.params.vals[index]["Net Amount Due"])
-                                        } else {
-                                            p["Other"] = req.body.params.vals[index]["Net Amount Due"]
-                                        }
-                                    } else {
-                                        if(!p[tempF])
-                                            p[tempF] = req.body.params.vals[index]["Net Amount Due"]
-                                        if(tempUF.includes("Total")){
-                                            p[tempF] = req.body.params.vals[index]["Net Amount Due"]
-                                        }
+                                    if(!p[tempF])
+                                        p[tempF] = req.body.params.vals[index]["Net Amount Due"]
+                                    }
+                                    if(tempUF.includes("Total")){
+                                        p[tempF] = req.body.params.vals[index]["Net Amount Due"]
                                     }
 
                                 return true
                             }
-                        }
                         })
                     }
                 })

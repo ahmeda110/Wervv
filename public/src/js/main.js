@@ -17,12 +17,15 @@ class XLSXTOJSON {
 
         if(res.length > 0) {
           res.map((item) => {
-            let temp = Number(item["Total Price"]) - (Number(item["COGS"]).toFixed(2) + Number(item["Bond Fee"]).toFixed(2) + Number(item["Brokerage"]).toFixed(2) +
-            Number(item["GST/HST"]).toFixed(2) + Number(item["PST"]).toFixed(2) + Number(item["Discounts"]).toFixed(2) + Number(item["Duty"]).toFixed(2) + Number(item["Entry Prep Fee"]).toFixed(2) +
-            Number(item["Fuel Surcharge"]).toFixed(2) + Number(item["Freight"]).toFixed(2) + Number(item["Residential Adjustments"]).toFixed(2) + Number(item["Shipping Charge Corrections"]).toFixed(2) +
-            Number(item["Transportation Charges"]).toFixed(2) + Number(item["UPS Returns"]).toFixed(2) + Number(item["Other"]).toFixed(2)) 
+            let UPS = ["Bond Fee", "Brokerage", "GST/HST", "PST", "Discounts", "Duty", "Entry Prep Fee", "Fuel Surcharge", "Freight", "Residential Adjustments","Shipping Charge Corrections", "Transportation Charges", "UPS Returns", "Other" ]
+            let temp = (Number(item["Total Price"]) - (Number(item["COGS"]) ) ).toFixed(2)
+            UPS.forEach((comp) => {
+              if(Number(item[comp]))
+                temp -= Number(item[comp])
+            })
 
-            if(item["COGS"]) item["Profit"] = temp
+    
+            if(temp) item["Profit"] = temp
             else item["Profit"] = "NAN"
           })
 
