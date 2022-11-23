@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <script defer src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-get-file/dist/filepond-plugin-get-file.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.min.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+
+    <script defer src="/src/js/main.js"></script>
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/filepond/dist/filepond.min.css" type="text/css">
+    <link rel="stylesheet" href="/src/styles/main.css" type="text/css">
+    
+    <title>Werrv-App</title>
+</head>
+
+<body>
+    <form enctype="multipart/form-data" class="upload">
+        <input 
+            id="upload"
+            type=file
+            class="filepond"
+            name="filepond" 
+            multiple 
+            data-allow-reorder="true"
+            data-max-file-size="3MB"
+            data-max-files="3"
+        >
+    </form>
+</body>
+</html>

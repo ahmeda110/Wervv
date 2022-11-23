@@ -1,0 +1,30 @@
+.upload {
+    width: 500px;
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.filepond--drop-label {
+    color: #4c4e53;
+}
+  
+.filepond--panel-root {
+    border-radius: 10px;
+    height: 1em;
+}
+
+.filepond--item-panel {
+    background-color: #363636;
+}
+
+.filepond--drip-blob {
+    background-color: #929292;
+
+}
+
+.filepond--credits {
+    display: none;
+}
